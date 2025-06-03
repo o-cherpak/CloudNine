@@ -1,7 +1,13 @@
 import "./App.css";
-import Header from "./components/Header";
+import { GeoForm } from "./components/GeoForm";
+import { Header } from "./components/Header";
 
-function App() {
-  return <Header />;
+export function App() {
+  return (
+    <>
+      <Header />
+
+      <GeoForm />
+    </>
+  );
 }
-export default App;

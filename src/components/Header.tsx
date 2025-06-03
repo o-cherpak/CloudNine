@@ -5,24 +5,32 @@ import {
   faTelegram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import SocialIcon from "./SocialIcon";
-import Logo from "./Logo";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { SocialIcon } from "./SocialIcon";
+import { Logo } from "./Logo";
 import "../index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Header() {
+export function Header() {
   return (
-    <header className="bg-white flex flex-row items-center justify-between p-4 px-10">
+    <header className="bg-gradient-to-br from-blue-400 to-indigo-600 border-b-2  flex flex-row items-center justify-between p-4 md:px-10 text-white">
       <Logo />
 
-      <div className="flex flex-row gap-10">
+      <div className="hidden md:flex items-center gap-6">
         <SocialIcon icon={faFacebook} href="#" color="text-blue-700" />
+
         <SocialIcon icon={faInstagram} href="#" color="text-yellow-500" />
+
         <SocialIcon icon={faTelegram} href="#" color="text-blue-600" />
-        <SocialIcon icon={faTwitter} href="#" color="text-blue-500" />
+
+        <SocialIcon icon={faTwitter} href="#" color="text-blue-600" />
+
         <SocialIcon icon={faReddit} href="#" color="text-red-600" />
       </div>
+
+      <button className="md:hidden p-2 rounded-md text-gray-900 hover:bg-gray-100">
+        <FontAwesomeIcon icon={faBars} />
+      </button>
     </header>
   );
 }
-
-export default Header;
