@@ -17,8 +17,8 @@ export interface WeatherData {
     temp_max: number;
     pressure: number;
     humidity: number;
-    sea_level?: number;
-    grnd_level?: number;
+    sea_level: number;
+    grnd_level: number;
   };
   visibility: number;
   wind: {
@@ -26,7 +26,7 @@ export interface WeatherData {
     deg: number;
     gust: number;
   };
-  rain: {
+  rain?: {
     [key: string]: number;
   };
   clouds: {
