@@ -44,7 +44,4 @@ export interface WeatherData {
   id: number;
   name: string;
   cod: number;
-  temp_c: number;
-  temp_f: number;
-  condition: string;
 }
