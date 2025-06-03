@@ -23,7 +23,7 @@ export function PopularCityCard({ cityName }: Readonly<{ cityName: string }>) {
 
   return (
     <div
-      className={`max-w-md rounded-xl p-6 text-white shadow-lg transition-all duration-300 ${getWeatherBackground(weatherData?.weather[0].main)}`}
+      className={`w-full rounded-xl p-4 text-white shadow-lg transition-all duration-300 ${getWeatherBackground(weatherData?.weather[0].main)}`}
     >
       <div className="flex items-center gap-3">
         {getWeatherIcon(weatherData?.weather[0].main ?? "")}

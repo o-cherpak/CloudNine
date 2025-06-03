@@ -7,6 +7,7 @@ import { CitiesCards } from "./CitiesCards";
 import { getLocation } from "../scripts/getLocation";
 import { getWeather } from "../scripts/getWeather";
 import { useState } from "react";
+import { CurrentWeatherCar } from "./CurrentWeatherCar";
 
 export function GeoForm() {
   const [cityName, setCityName] = useState("");
@@ -24,19 +25,13 @@ export function GeoForm() {
 
     const weatherData = await getWeather(location);
 
-    console.log(weatherData);
-
     setCityName(weatherData.name);
   };
 
   return (
-    <div className="pt-4 md:pt-10 xl:pt-20">
-      <div className="flex p-2 items-center justify-center text-white ">
-        <h1 className="hidden text-center font-medium text-2xl">
-          Write your location
-        </h1>
-
-        <form className="flex items-center bg-white rounded-lg shadow-sm border md:w-1/2 border-gray-200 p-2">
+    <div className="pt-4 md:pt-10 xl:pt-20 flex-col items-center justify-center w-full px-4">
+      <div className="flex p-2 items-center justify-center gap-4 text-white md:px-40 xl:px-86 w-full">
+        <form className="flex items-center bg-white rounded-lg shadow-sm border w-full border-gray-200 p-2">
           <input
             id="cityInput"
             value={cityName}
@@ -56,11 +51,13 @@ export function GeoForm() {
 
         <button
           type="submit"
-          className="ml-4 p-2 text-white bg-blue-600 rounded-xl h-10 w-14 transition-colors duration-200 flex items-center justify-center"
+          className="p-2 text-white bg-blue-600 rounded-xl h-10 w-14 transition-colors duration-200 flex items-center justify-center"
         >
           <FontAwesomeIcon icon={faRightToBracket} />
         </button>
       </div>
+
+      <CurrentWeatherCar />
 
       <CitiesCards />
     </div>
