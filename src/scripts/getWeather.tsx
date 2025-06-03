@@ -1,4 +1,12 @@
-export async function getWeather({ lat, lon }: { lat: number; lon: number }) {
+import type { WeatherData } from "../interfaces/IWeatherData";
+
+export async function getWeather({
+  lat,
+  lon,
+}: {
+  lat: number;
+  lon: number;
+}): Promise<WeatherData> {
   const myKey = "968dd7f47efc7262735c392d96f65181";
 
   const weatherResponse = await fetch(

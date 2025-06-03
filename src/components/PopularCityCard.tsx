@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getGeoByCity } from "../scripts/getGeo";
 import { getWeather } from "../scripts/getWeather";
 import type { WeatherData } from "../interfaces/IWeatherData";
@@ -10,16 +10,16 @@ import {
 export function PopularCityCard({ cityName }: Readonly<{ cityName: string }>) {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
-  const fetchWeather = async () => {
+  const fetchWeather = useCallback(async () => {
     const geo = await getGeoByCity(cityName);
     const weather = await getWeather(geo);
 
     setWeatherData(weather);
-  };
+  }, [cityName]);
 
   useEffect(() => {
     fetchWeather();
-  });
+  }, [cityName, fetchWeather]);
 
   return (
     <div

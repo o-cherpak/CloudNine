@@ -14,6 +14,7 @@ export function CitiesCards() {
       <PopularCityCard cityName="Sydney" />
 
       <PopularCityCard cityName="Lublin" />
+
     </div>
   );
 }
