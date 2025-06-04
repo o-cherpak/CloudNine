@@ -9,7 +9,7 @@ export function CurrentWeatherCar(
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
   const fetchWeather = useCallback(async () => {
-    const weather = await getWeather(geoData);
+    const weather = await getWeather(geoData, 1);
 
     console.log("Weather data:", weather);
 
@@ -20,7 +20,7 @@ export function CurrentWeatherCar(
       return;
     }
 
-    setWeatherData(weather);
+    setWeatherData(weather as WeatherData);
   }, [geoData]);
 
   useEffect(() => {
@@ -29,14 +29,14 @@ export function CurrentWeatherCar(
 
   if (!weatherData) {
     return (
-      <div className="mt-10 max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+      <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
         <p className="text-center text-gray-500">Loading weather data...</p>
       </div>
     );
   }
 
   return (
-    <div className="mt-10 max-w-4xl mx-auto rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-700 text-white shadow-2xl overflow-hidden">
+    <div className="max-w-4xl mx-auto rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-700 text-white shadow-2xl overflow-hidden">
       <div className="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-white/20">
         <div className="w-full">
           <div className="flex justify-between items-center">

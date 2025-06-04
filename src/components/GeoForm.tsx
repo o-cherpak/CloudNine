@@ -6,8 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getLocation } from "../scripts/getLocation";
 import { getWeather } from "../scripts/getWeather";
 import { useState, type FormEvent } from "react";
-import { CurrentWeatherCar } from "./CurrentWeatherCar";
 import { getGeoByCity } from "../scripts/getGeo";
+import { WeatherNavigation } from "./WeatherNavigation";
+import type { WeatherData } from "../interfaces/IWeatherData";
 
 export function GeoForm() {
   const [cityName, setCityName] = useState("");
@@ -27,7 +28,7 @@ export function GeoForm() {
       return;
     }
 
-    const weatherData = await getWeather(location);
+    const weatherData = await getWeather(location, 1) as WeatherData;
 
     setCityName(weatherData.name);
   };
@@ -52,7 +53,7 @@ export function GeoForm() {
         <form
           onSubmit={(e) => handleSubmit(e)}
           id="form"
-          className="flex items-center bg-white rounded-lg shadow-sm border w-full border-gray-200 p-2"
+          className="flex items-center bg-white rounded-lg shadow-sm border w-full border-gray-200 p-2 space-x-2 xl:space-x-40"
         >
           <input
             id="cityInput"
@@ -81,7 +82,7 @@ export function GeoForm() {
       </div>
 
       {isCitySelected && geoData ? (
-        <CurrentWeatherCar lat={geoData.lat} lon={geoData.lon} />
+        <WeatherNavigation lat={geoData.lat} lon={geoData.lon} />
       ) : (
         <div className="mt-10 text-center text-gray-500">
           <p className="text-xl md:text-2xl xl:text-4xl">

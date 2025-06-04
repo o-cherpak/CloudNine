@@ -12,9 +12,9 @@ export function PopularCityCard({ cityName }: Readonly<{ cityName: string }>) {
 
   const fetchWeather = useCallback(async () => {
     const geo = await getGeoByCity(cityName);
-    const weather = await getWeather(geo);
+    const weather = await getWeather(geo, 1);
 
-    setWeatherData(weather);
+    setWeatherData(weather as WeatherData);
   }, [cityName]);
 
   useEffect(() => {
