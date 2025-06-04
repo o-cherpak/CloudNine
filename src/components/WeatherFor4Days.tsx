@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import type { WeatherForecastResponse } from "../interfaces/IWeatherData";
+import type {
+  WeatherForecastResponse,
+  GroupedWeatherData,
+  ForecastItem,
+} from "../interfaces/IWeatherData";
 import { getWeather } from "../scripts/getWeather";
+import { SegmentedWeatherCard } from "./SegmentedWeatherCard";
 
 export function WeatherFor4Days(
   geoData: Readonly<{ lat: number; lon: number }>
@@ -27,26 +32,39 @@ export function WeatherFor4Days(
     fetchWeather();
   }, [geoData, fetchWeather]);
 
+  const groupByDate = (list: ForecastItem[]): GroupedWeatherData => {
+    return list.reduce((acc, item) => {
+      const date = item.dt_txt.split(" ")[0];
+
+      if (!acc[date]) {
+        acc[date] = [];
+      }
+
+      acc[date].push(item);
+      return acc;
+    }, {} as GroupedWeatherData);
+  };
+
+  let groupedData: GroupedWeatherData = {};
+
+  if (weatherData) {
+    groupedData = groupByDate(weatherData.list);
+  }
+
+  const dates = Object.keys(groupedData);
+
+  console.log("Grouped weather data:", dates, groupedData);
+
   return (
     <div className="animate-fadeIn flex-col">
-      <h3 className="text-xl font-bold text-black mb-4">Forecast for 4 days</h3>
       <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        {/* Тут місце для карток прогнозу */}
-        <div className="bg-black rounded-lg p-4 text-center">
-          <p className="text-white/80">{weatherData?.list[0].main?.temp}°C</p>
-        </div>
-
-        <div className="bg-black rounded-lg p-4 text-center">
-          <p className="text-white/80">Day 2</p>
-        </div>
-
-        <div className="bg-black rounded-lg p-4 text-center">
-          <p className="text-white/80">Day 3</p>
-        </div>
-
-        <div className="bg-black rounded-lg p-4 text-center">
-          <p className="text-white/80">Day 4</p>
-        </div>
+        {dates.map((date) => (
+          <SegmentedWeatherCard
+            key={date}
+            date={date}
+            forecasts={groupedData[date]}
+          />
+        ))}
       </div>
     </div>
   );

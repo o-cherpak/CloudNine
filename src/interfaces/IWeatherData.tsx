@@ -54,7 +54,7 @@ export interface WeatherForecastResponse {
   city: CityInfo;
 }
 
-interface ForecastItem {
+export interface ForecastItem {
   dt: number; // Time of data forecasted, Unix UTC
   main: {
     temp: number; // Temperature (Kelvin by default)
@@ -106,8 +106,12 @@ interface CityInfo {
     lat: number;
     lon: number;
   };
-  country: string; 
+  country: string;
   timezone: number;
   sunrise: number;
   sunset: number;
+}
+
+export interface GroupedWeatherData {
+  [date: string]: ForecastItem[];
 }

@@ -13,9 +13,9 @@ export function WeatherNavigation(
     { id: "16d", label: "For 16 days" },
   ];
 
+
   return (
     <div className="mt-6 w-full mx-auto">
-      {/* Навігація - однакова для всіх розмірів екрану */}
       <div className="flex justify-center mb-6 w-full">
         <div className="w-full md:w-1/2 xl:1/3 justify-around inline-flex bg-gradient-to-br from-blue-500 to-indigo-600 backdrop-blur-md rounded-full p-1 shadow-inner">
           {tabs.map((tab) => (
@@ -34,7 +34,6 @@ export function WeatherNavigation(
         </div>
       </div>
 
-      {/* Контент */}
       <div className="flex xl:items-end xl:space-x-6 xl:justify-between xl:bg-gradient-to-br from-blue-400 to-indigo-700 rounded-2xl xl:p-10 sm:p-6 backdrop-blur-sm border border-white/10 shadow-xl">
         <div className="w-full">
           {activeTab === "now" && (
@@ -51,11 +50,9 @@ export function WeatherNavigation(
                 Forecast for 16 days
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
-                {/* Тут місце для карток прогнозу */}
                 <div className="bg-white/5 rounded-lg p-2 text-center">
                   <p className="text-xs text-white/80">День 1</p>
                 </div>
-                {/* ... */}
               </div>
             </div>
           )}
