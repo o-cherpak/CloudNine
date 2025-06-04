@@ -43,6 +43,7 @@ export function CurrentWeatherCar(
             <h1 className="text-2xl sm:text-3xl font-bold">
               {weatherData?.name}
             </h1>
+
             <div className="text-4xl sm:text-6xl sm:hidden">
               {getWeatherIcon(weatherData.weather[0].main)}
             </div>
@@ -67,6 +68,7 @@ export function CurrentWeatherCar(
           <div className="text-6xl sm:text-7xl font-bold">
             {Math.round(weatherData.main.temp)}
           </div>
+
           <p className="text-base sm:text-lg mt-1 sm:mt-2">
             Feels like {Math.round(weatherData.main.feels_like)}°C
           </p>
@@ -76,10 +78,12 @@ export function CurrentWeatherCar(
           <div className="grid grid-cols-2 gap-2 sm:gap-3">
             <div className="flex items-center">
               <span className="text-xl sm:text-2xl mr-2">💧</span>
+
               <div className="overflow-hidden">
                 <p className="text-xs sm:text-sm opacity-80 truncate">
                   Humidity
                 </p>
+
                 <p className="text-sm sm:font-medium truncate">
                   {weatherData.main.humidity}%
                 </p>
@@ -88,9 +92,12 @@ export function CurrentWeatherCar(
 
             <div className="flex items-center">
               <span className="text-xl sm:text-2xl mr-2">💨</span>
+
               <div className="overflow-hidden">
                 <p className="text-xs sm:text-sm opacity-80 truncate">Wind</p>
+
                 <p className="text-sm sm:font-medium truncate">
+
                   {weatherData.wind.speed} m/s
                 </p>
               </div>
@@ -110,10 +117,12 @@ export function CurrentWeatherCar(
 
             <div className="flex items-center">
               <span className="text-xl sm:text-2xl mr-2">👁️</span>
+
               <div className="overflow-hidden">
                 <p className="text-xs sm:text-sm opacity-80 truncate">
                   Visibility
                 </p>
+                
                 <p className="text-sm sm:font-medium truncate">
                   {weatherData.visibility / 1000} km
                 </p>
