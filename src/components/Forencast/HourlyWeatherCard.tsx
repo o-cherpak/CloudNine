@@ -56,6 +56,7 @@ export function HourlyWeatherCard(
         <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
           By hour:
         </h3>
+        
         <div className="flex min-[400px]:justify-center overflow-x-auto pb-2 gap-2 sm:gap-6">
           {dates.length > 0 &&
             groupedData[dates[0]].map((forecast) => (

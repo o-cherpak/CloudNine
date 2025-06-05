@@ -16,8 +16,6 @@ export function WeatherFor4Days(
   const fetchWeather = useCallback(async () => {
     const weather = await getWeather(geoData, 4);
 
-    console.log("Weather data:", weather);
-
     if (!weather) {
       alert("Weather data not found. Please check your location.");
       setWeatherData(null);
@@ -46,7 +44,7 @@ export function WeatherFor4Days(
       2: "md:grid-cols-2",
       3: "md:grid-cols-3",
       4: "md:grid-cols-4",
-    }[dates.length] || "md:grid-cols-1";
+    }[dates.length] ?? "md:grid-cols-1";
 
   return (
     <div className="animate-fadeIn flex-col">

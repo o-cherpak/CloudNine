@@ -14,7 +14,6 @@ export function WeatherNavigation(
     { id: "now", label: "Now" },
     { id: "1d", label: "1 day" },
     { id: "4d", label: "3-4 days" },
-    { id: "16d", label: "16 days" },
   ];
 
   return (
@@ -51,19 +50,6 @@ export function WeatherNavigation(
 
           {activeTab === "4d" && (
             <WeatherFor4Days lat={geoData.lat} lon={geoData.lon} />
-          )}
-
-          {activeTab === "16d" && (
-            <div className="animate-fadeIn">
-              <h3 className="text-xl font-bold text-white mb-4">
-                Forecast for 16 days
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
-                <div className="bg-white/5 rounded-lg p-2 text-center">
-                  <p className="text-xs text-white/80">День 1</p>
-                </div>
-              </div>
-            </div>
           )}
         </div>
 

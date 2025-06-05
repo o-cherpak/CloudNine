@@ -10,9 +10,7 @@ export function CurrentWeatherCar(
 
   const fetchWeather = useCallback(async () => {
     const weather = await getWeather(geoData, 1);
-
-    console.log("Weather data:", weather);
-
+    
     if (!weather) {
       alert("Weather data not found. Please check your location.");
       setWeatherData(null);

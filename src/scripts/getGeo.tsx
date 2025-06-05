@@ -1,8 +1,8 @@
 export async function getGeoByCity(cityName: string) {
-  const myKey = "968dd7f47efc7262735c392d96f65181";
+  const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
   const geoResponse = await fetch(
-    `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${myKey}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`
   );
   const geoData = await geoResponse.json();
 
