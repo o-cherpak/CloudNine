@@ -2,10 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { getGeoByCity } from "../scripts/getGeo";
 import { getWeather } from "../scripts/getWeather";
 import type { WeatherData } from "../interfaces/IWeatherData";
-import {
-  getWeatherBackground,
-  getWeatherIcon,
-} from "../scripts/getWeatherBgAndIcon";
+import { getWeatherBackground } from "../scripts/getWeatherBgAndIcon";
 
 export function PopularCityCard({ cityName }: Readonly<{ cityName: string }>) {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -26,7 +23,13 @@ export function PopularCityCard({ cityName }: Readonly<{ cityName: string }>) {
       className={`w-full rounded-xl p-4 text-white shadow-lg transition-all duration-300 ${getWeatherBackground(weatherData?.weather[0].main)}`}
     >
       <div className="flex items-center gap-3">
-        {getWeatherIcon(weatherData?.weather[0].main ?? "")}
+        {weatherData && (
+          <img
+            className="bg-black/10  rounded-2xl backdrop-blur-sm"
+            src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
+            alt={weatherData.weather[0].main || ""}
+          />
+        )}
 
         <div>
           <h2 className="text-xl font-bold">{cityName}</h2>

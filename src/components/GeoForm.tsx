@@ -7,7 +7,7 @@ import { getLocation } from "../scripts/getLocation";
 import { getWeather } from "../scripts/getWeather";
 import { useState, type FormEvent } from "react";
 import { getGeoByCity } from "../scripts/getGeo";
-import { WeatherNavigation } from "./WeatherNavigation";
+import { WeatherNavigation } from "./Forencast/WeatherNavigation";
 import type { WeatherData } from "../interfaces/IWeatherData";
 
 export function GeoForm() {
@@ -28,9 +28,15 @@ export function GeoForm() {
       return;
     }
 
-    const weatherData = await getWeather(location, 1) as WeatherData;
+    const weatherData = (await getWeather(location, 1)) as WeatherData;
 
     setCityName(weatherData.name);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleSubmit(e as unknown as FormEvent<HTMLFormElement>);
+    }
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -59,6 +65,7 @@ export function GeoForm() {
             id="cityInput"
             value={cityName}
             onChange={(e) => setCityName(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e)}
             type="text"
             placeholder="London..."
             className="flex-1 px-3 py-2 outline-none text-gray-700 placeholder-gray-400"

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import { getWeather } from "../scripts/getWeather";
-import type { WeatherData } from "../interfaces/IWeatherData";
-import { getWeatherIcon } from "../scripts/getWeatherBgAndIcon";
+import { getWeather } from "../../scripts/getWeather";
+import type { WeatherData } from "../../interfaces/IWeatherData";
+import { getWeatherIcon } from "../../scripts/getWeatherBgAndIcon";
 
 export function CurrentWeatherCar(
   geoData: Readonly<{ lat: number; lon: number }>
@@ -97,7 +97,6 @@ export function CurrentWeatherCar(
                 <p className="text-xs sm:text-sm opacity-80 truncate">Wind</p>
 
                 <p className="text-sm sm:font-medium truncate">
-
                   {weatherData.wind.speed} m/s
                 </p>
               </div>
@@ -122,7 +121,7 @@ export function CurrentWeatherCar(
                 <p className="text-xs sm:text-sm opacity-80 truncate">
                   Visibility
                 </p>
-                
+
                 <p className="text-sm sm:font-medium truncate">
                   {weatherData.visibility / 1000} km
                 </p>

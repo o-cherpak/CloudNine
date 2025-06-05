@@ -1,4 +1,4 @@
-import type { ForecastItem } from "../interfaces/IWeatherData";
+import type { ForecastItem } from "../../interfaces/IWeatherData";
 
 interface SegmentedWeatherCardProps {
   date: string;

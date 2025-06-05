@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function Header() {
   return (
-    <header className="bg-gradient-to-br from-blue-400 to-indigo-600 border-b-2  flex flex-row items-center justify-between p-4 md:px-10 text-white">
+    <header className="bg-gradient-to-br from-indigo-700 to-blue-600 border-b-2  flex flex-row items-center justify-between p-4 md:px-10 text-white">
       <Logo />
 
       <div className="hidden md:flex items-center gap-6">

@@ -2,10 +2,10 @@ import { useCallback, useEffect, useState } from "react";
 import type {
   WeatherForecastResponse,
   GroupedWeatherData,
-  ForecastItem,
-} from "../interfaces/IWeatherData";
-import { getWeather } from "../scripts/getWeather";
+} from "../../interfaces/IWeatherData";
+import { getWeather } from "../../scripts/getWeather";
 import { SegmentedWeatherCard } from "./SegmentedWeatherCard";
+import { groupByDate } from "../../scripts/getGroupedByDates";
 
 export function WeatherFor4Days(
   geoData: Readonly<{ lat: number; lon: number }>
@@ -32,19 +32,6 @@ export function WeatherFor4Days(
     fetchWeather();
   }, [geoData, fetchWeather]);
 
-  const groupByDate = (list: ForecastItem[]): GroupedWeatherData => {
-    return list.reduce((acc, item) => {
-      const date = item.dt_txt.split(" ")[0];
-
-      if (!acc[date]) {
-        acc[date] = [];
-      }
-
-      acc[date].push(item);
-      return acc;
-    }, {} as GroupedWeatherData);
-  };
-
   let groupedData: GroupedWeatherData = {};
 
   if (weatherData) {
@@ -53,11 +40,17 @@ export function WeatherFor4Days(
 
   const dates = Object.keys(groupedData);
 
-  console.log("Grouped weather data:", dates, groupedData);
+  const gridCols =
+    {
+      1: "md:grid-cols-1",
+      2: "md:grid-cols-2",
+      3: "md:grid-cols-3",
+      4: "md:grid-cols-4",
+    }[dates.length] || "md:grid-cols-1";
 
   return (
     <div className="animate-fadeIn flex-col">
-      <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className={`grid sm:grid-cols-2 ${gridCols} gap-4`}>
         {dates.map((date) => (
           <SegmentedWeatherCard
             key={date}
