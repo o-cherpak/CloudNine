@@ -115,3 +115,5 @@ interface CityInfo {
 export interface GroupedWeatherData {
   [date: string]: ForecastItem[];
 }
+
+export type GeoData = { lat: number; lon: number };

@@ -9,12 +9,13 @@ import { useState, type FormEvent } from "react";
 import { getGeoByCity } from "../scripts/getGeo";
 import { WeatherNavigation } from "./Forencast/WeatherNavigation";
 import type { WeatherData } from "../interfaces/IWeatherData";
+import { WeatherMaps } from "./WeatherMaps/WeatherMaps";
 
 export function GeoForm() {
-  const [cityName, setCityName] = useState("");
   const [geoData, setGeoData] = useState<{ lat: number; lon: number } | null>(
     null
   );
+  const [cityName, setCityName] = useState("");
   const [isCitySelected, setIsCitySelected] = useState(false);
 
   const handleLocationClick = async (
@@ -97,6 +98,8 @@ export function GeoForm() {
           </p>
         </div>
       )}
+
+      {geoData && <WeatherMaps lat={geoData.lat} lon={geoData.lon} />}
     </div>
   );
 }

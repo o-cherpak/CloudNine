@@ -16,7 +16,7 @@ export async function getWeather(
         url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=uk`;
         break;
       case 4:
-        url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=uk&cnt=26`;
+        url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=uk&cnt=32`;
         break;
       default:
         throw new Error("Unsupported forecast duration");
