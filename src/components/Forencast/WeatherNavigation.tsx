@@ -13,7 +13,7 @@ export function WeatherNavigation(
   const tabs = [
     { id: "now", label: "Now" },
     { id: "1d", label: "1 day" },
-    { id: "4d", label: "3-4 days" },
+    { id: "4d", label: "4-5 days" },
   ];
 
   return (

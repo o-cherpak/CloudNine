@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import  { useEffect, useRef } from "react";
 import { Map, config, MapStyle } from "@maptiler/sdk";
 import { PrecipitationLayer, ColorRamp } from "@maptiler/weather";
 import "@maptiler/sdk/dist/maptiler-sdk.css";
@@ -15,7 +15,7 @@ export const RainMap = ({ lat, lon }: { lat: number; lon: number }) => {
       container: mapRef.current,
       style: MapStyle.DATAVIZ.DARK,
       center: [lon, lat],
-      zoom: 6,
+      zoom: 5,
     });
 
     const precipLayer = new PrecipitationLayer({
@@ -30,5 +30,7 @@ export const RainMap = ({ lat, lon }: { lat: number; lon: number }) => {
     return () => map.remove();
   }, [lat, lon]);
 
-  return <div ref={mapRef} className="w-full h-[70vh] rounded-xl" />;
+  return (
+    <div ref={mapRef} className="w-full h-[90vh] md:h-[70vh] rounded-xl" />
+  );
 };

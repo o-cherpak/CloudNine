@@ -38,17 +38,9 @@ export function WeatherFor4Days(
 
   const dates = Object.keys(groupedData);
 
-  const gridCols =
-    {
-      1: "md:grid-cols-1",
-      2: "md:grid-cols-2",
-      3: "md:grid-cols-3",
-      4: "md:grid-cols-4",
-    }[dates.length] ?? "md:grid-cols-1";
-
   return (
     <div className="animate-fadeIn flex-col">
-      <div className={`grid sm:grid-cols-2 ${gridCols} gap-4`}>
+      <div className={`grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4`}>
         {dates.map((date) => (
           <SegmentedWeatherCard
             key={date}

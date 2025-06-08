@@ -32,5 +32,7 @@ export const TemperatureMap = (
     return () => map.remove();
   }, [geoData.lon, geoData.lat]);
 
-  return <div ref={mapRef} className="w-full h-[70vh] rounded-xl" />;
+  return (
+    <div ref={mapRef} className="w-full h-[90vh] md:h-[70vh] rounded-xl" />
+  );
 };

@@ -8,6 +8,10 @@ export async function getGeoByCity(cityName: string) {
 
   const location = geoData[0];
 
+  if (!location) {
+    return undefined;
+  }
+
   const { lat, lon } = location;
   return { lat, lon };
 }

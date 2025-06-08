@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import "./App.css";
-import { GeoForm } from "./components/GeoForm";
+import { GeoForm } from "./components/Main";
 import { Header } from "./components/Header";
 import { CitiesCards } from "./components/CitiesCards";
 

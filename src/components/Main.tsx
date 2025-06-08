@@ -10,6 +10,8 @@ import { getGeoByCity } from "../scripts/getGeo";
 import { WeatherNavigation } from "./Forencast/WeatherNavigation";
 import type { WeatherData } from "../interfaces/IWeatherData";
 import { WeatherMaps } from "./WeatherMaps/WeatherMaps";
+import { notifyError } from "../scripts/notify";
+import { ToastContainer } from "react-toastify";
 
 export function GeoForm() {
   const [geoData, setGeoData] = useState<{ lat: number; lon: number } | null>(
@@ -25,7 +27,7 @@ export function GeoForm() {
     const location = await getLocation();
 
     if (!location) {
-      alert("Unable to retrieve location. Please try again.");
+      notifyError("Unable to retrieve location. Please try again.");
       return;
     }
 
@@ -46,7 +48,7 @@ export function GeoForm() {
     const geo = await getGeoByCity(cityName);
 
     if (!geo) {
-      alert("City not found. Please check the name and try again.");
+      notifyError("City not found. Please check the name and try again.");
       return;
     }
 
@@ -56,6 +58,15 @@ export function GeoForm() {
 
   return (
     <div className="pt-4 md:pt-10 xl:pt-20 flex-col items-center justify-center w-full px-4">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       <div className="flex p-2 items-center justify-center gap-4 text-white md:px-40 xl:px-86 w-full">
         <form
           onSubmit={(e) => handleSubmit(e)}
