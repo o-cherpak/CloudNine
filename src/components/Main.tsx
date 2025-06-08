@@ -22,6 +22,7 @@ export function GeoForm() {
 
   useEffect(() => {
     const lastCity = localStorage.getItem("lastCity");
+
     if (lastCity) {
       setCityName(lastCity);
     }
@@ -117,6 +118,7 @@ export function GeoForm() {
           </p>
         </div>
       )}
+
 
       {geoData && <WeatherMaps lat={geoData.lat} lon={geoData.lon} />}
     </div>

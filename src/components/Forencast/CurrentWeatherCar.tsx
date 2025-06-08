@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { getWeather } from "../../scripts/getWeather";
 import type { WeatherData } from "../../interfaces/IWeatherData";
 import { getWeatherIcon } from "../../scripts/getWeatherBgAndIcon";
+import { getAdvise } from "../../scripts/getAdvise";
 
 export function CurrentWeatherCar(
   geoData: Readonly<{ lat: number; lon: number }>
@@ -10,7 +11,7 @@ export function CurrentWeatherCar(
 
   const fetchWeather = useCallback(async () => {
     const weather = await getWeather(geoData, 1);
-    
+
     if (!weather) {
       alert("Weather data not found. Please check your location.");
       setWeatherData(null);
@@ -53,6 +54,10 @@ export function CurrentWeatherCar(
 
           <p className="text-xs sm:text-sm mt-2 opacity-80">
             Updated: {new Date().toLocaleTimeString()}
+          </p>
+
+          <p className="text-xs sm:text-lg mt-1">
+            {getAdvise(weatherData.weather[0].main)}
           </p>
         </div>
 
