@@ -5,7 +5,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getLocation } from "../scripts/getLocation";
 import { getWeather } from "../scripts/getWeather";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { getGeoByCity } from "../scripts/getGeo";
 import { WeatherNavigation } from "./Forencast/WeatherNavigation";
 import type { WeatherData } from "../interfaces/IWeatherData";
@@ -19,6 +19,13 @@ export function GeoForm() {
   );
   const [cityName, setCityName] = useState("");
   const [isCitySelected, setIsCitySelected] = useState(false);
+
+  useEffect(() => {
+    const lastCity = localStorage.getItem("lastCity");
+    if (lastCity) {
+      setCityName(lastCity);
+    }
+  }, []);
 
   const handleLocationClick = async (
     e: React.MouseEvent<HTMLButtonElement>
@@ -54,6 +61,7 @@ export function GeoForm() {
 
     setGeoData(geo);
     setIsCitySelected(true);
+    localStorage.setItem("lastCity", cityName);
   };
 
   return (

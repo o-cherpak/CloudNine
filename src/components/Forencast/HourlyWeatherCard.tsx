@@ -41,7 +41,7 @@ export function HourlyWeatherCard(
 
   return (
     <div className="flex lg:flex-row justify-around items-center w-full p-2 sm:p-4">
-      <div className="bg-gradient-to-br to-blue-600 from-indigo-700 rounded-2xl p-4 sm:p-6 shadow-xl text-white w-full max-w-2xl">
+      <div className="bg-gradient-to-br to-blue-600 from-indigo-700 rounded-2xl p-4 sm:p-6 shadow-xl text-white w-full">
         <div className="flex justify-between items-center mb-4 sm:mb-6">
           <h2 className="text-xl sm:text-2xl font-bold">Today</h2>
 
@@ -57,7 +57,7 @@ export function HourlyWeatherCard(
           By hour:
         </h3>
         
-        <div className="flex min-[400px]:justify-center overflow-x-auto pb-2 gap-2 sm:gap-6">
+        <div className="flex xl:justify-center overflow-x-auto pb-2 gap-2 sm:gap-6">
           {dates.length > 0 &&
             groupedData[dates[0]].map((forecast) => (
               <div
@@ -89,7 +89,7 @@ export function HourlyWeatherCard(
       </div>
 
       <img
-        className="hidden lg:flex h-40 sm:h-80"
+        className="hidden xl:flex h-40 sm:h-80"
         src="images/undraw_fun-moments_x0p9.svg"
         alt="fun-moments"
       />
