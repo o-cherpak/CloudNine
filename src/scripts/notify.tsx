@@ -10,3 +10,13 @@ export function notifyError(message: string) {
     draggable: true,
   });
 }
+
+export function notifySuccess(message: string) {
+  toast.success(message, {
+    position: "top-right",
+    autoClose: 2000,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+}

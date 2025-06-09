@@ -5,28 +5,21 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getLocation } from "../scripts/getLocation";
 import { getWeather } from "../scripts/getWeather";
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { getGeoByCity } from "../scripts/getGeo";
 import { WeatherNavigation } from "./Forencast/WeatherNavigation";
 import type { WeatherData } from "../interfaces/IWeatherData";
 import { WeatherMaps } from "./WeatherMaps/WeatherMaps";
 import { notifyError } from "../scripts/notify";
 import { ToastContainer } from "react-toastify";
+import { LastCities } from "./LastCities";
 
-export function GeoForm() {
+export function Main() {
   const [geoData, setGeoData] = useState<{ lat: number; lon: number } | null>(
     null
   );
   const [cityName, setCityName] = useState("");
-  const [isCitySelected, setIsCitySelected] = useState(false);
-
-  useEffect(() => {
-    const lastCity = localStorage.getItem("lastCity");
-
-    if (lastCity) {
-      setCityName(lastCity);
-    }
-  }, []);
+  const [cityToSave, setCityToSave] = useState("");
 
   const handleLocationClick = async (
     e: React.MouseEvent<HTMLButtonElement>
@@ -46,13 +39,17 @@ export function GeoForm() {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      handleSubmit(e as unknown as FormEvent<HTMLFormElement>);
+      handleSubmit(cityName);
     }
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    await handleSubmit(cityName);
+  };
+
+  async function handleSubmit(cityName: string) {
     const geo = await getGeoByCity(cityName);
 
     if (!geo) {
@@ -61,9 +58,11 @@ export function GeoForm() {
     }
 
     setGeoData(geo);
-    setIsCitySelected(true);
-    localStorage.setItem("lastCity", cityName);
-  };
+
+    if (cityName) {
+      setCityToSave(cityName);
+    }
+  }
 
   return (
     <div className="pt-4 md:pt-10 xl:pt-20 flex-col items-center justify-center w-full px-4">
@@ -78,7 +77,7 @@ export function GeoForm() {
 
       <div className="flex p-2 items-center justify-center gap-4 text-white md:px-40 xl:px-86 w-full">
         <form
-          onSubmit={(e) => handleSubmit(e)}
+          onSubmit={(e) => submit(e)}
           id="form"
           className="flex items-center bg-white rounded-lg shadow-sm border w-full border-gray-200 p-2 space-x-2 xl:space-x-40"
         >
@@ -109,16 +108,15 @@ export function GeoForm() {
         </button>
       </div>
 
-      {isCitySelected && geoData ? (
-        <WeatherNavigation lat={geoData.lat} lon={geoData.lon} />
-      ) : (
-        <div className="mt-10 text-center text-gray-500">
-          <p className="text-xl md:text-2xl xl:text-4xl">
-            Please enter a city name or use your location.
-          </p>
-        </div>
-      )}
+      <LastCities
+        cityName={cityToSave}
+        onCityClick={(clickedCity) => {
+          setCityName(clickedCity);
+          handleSubmit(clickedCity);
+        }}
+      />
 
+      {geoData && <WeatherNavigation lat={geoData.lat} lon={geoData.lon} />}
 
       {geoData && <WeatherMaps lat={geoData.lat} lon={geoData.lon} />}
     </div>

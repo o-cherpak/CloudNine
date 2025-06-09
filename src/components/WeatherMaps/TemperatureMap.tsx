@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Map, config, MapStyle } from "@maptiler/sdk";
 import { TemperatureLayer, ColorRamp } from "@maptiler/weather";
 import "@maptiler/sdk/dist/maptiler-sdk.css";
