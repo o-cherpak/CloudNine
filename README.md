@@ -1,54 +1,26 @@
-# React + TypeScript + Vite
+CloudNine Weather App
+My first react weather application built with: React/vite, TypeScript, Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
 
-Currently, two official plugins are available:
+Real-time weather data (current, hourly, and daily forecasts)
+Dynamic background (changes based on weather conditions)
+Search functionality for cities worldwide
+Temperature unit toggle (Celsius / Fahrenheit)
+Responsive design (works on mobile, tablet, and desktop)
+TypeScript for type safety and better maintainability
+Tailwind CSS for fast and customizable styling
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Technologies Used
 
-## Expanding the ESLint configuration
+Vite – Blazing-fast build tool
+React – Frontend library
+TypeScript – Static typing
+Tailwind CSS – Utility-first styling
+OpenWeatherMap and MapTiler API  – Weather data
+Toast - for notification
+![image](https://github.com/user-attachments/assets/4088df51-975a-4cf8-a8c2-9624c09a4a44)
+![image](https://github.com/user-attachments/assets/af35f0b2-6d4f-409a-bfc4-4c5193acb4d4)
+![image](https://github.com/user-attachments/assets/33527efc-b81f-49c9-b529-163620d62fb4)
+![image](https://github.com/user-attachments/assets/b3245ffa-fb6d-4c15-8acb-166a99044f4d)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
