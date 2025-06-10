@@ -9,11 +9,11 @@ interface SocialIconProps {
 
 export function SocialIcon({ icon, href, color }: Readonly<SocialIconProps>) {
   return (
-    <a href={href} className="hover:opacity-80 transition-colors">
+    <a href={href} className=" transition-colors">
       <FontAwesomeIcon
         icon={icon}
         size="2x"
-        className={`h-6 w-6 text-gray-200 hover:${color} transition-colors`}
+        className={`h-6 w-6 ${color} hover:scale-120 duration-300 ease `}
       />
     </a>
   );

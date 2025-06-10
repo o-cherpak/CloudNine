@@ -62,7 +62,7 @@ export function HourlyWeatherCard(
             groupedData[dates[0]].map((forecast) => (
               <div
                 key={forecast.dt}
-                className=" bg-white/10 p-2 sm:p-3 rounded-lg backdrop-blur-sm text-center min-w-[70px] sm:min-w-[100px]"
+                className=" bg-white/10 hover:scale-105 ease duration-300 p-2 sm:p-3 rounded-lg backdrop-blur-sm text-center min-w-[70px] sm:min-w-[100px]"
               >
                 <p className="font-medium text-xs sm:text-base">
                   {new Date(forecast.dt * 1000).toLocaleTimeString("uk-UA", {

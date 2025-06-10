@@ -65,7 +65,7 @@ export function Main() {
   }
 
   return (
-    <div className="pt-4 md:pt-10 xl:pt-20 flex-col items-center justify-center w-full px-4">
+    <div className="pt-4 md:pt-10 flex-col items-center justify-center w-full px-4">
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -93,7 +93,7 @@ export function Main() {
 
           <button
             onClick={handleLocationClick}
-            className="p-2 text-white bg-blue-500 rounded-xl h-8 hover:bg-blue-600 transition-colors duration-200 flex items-center justify-center"
+            className="p-2 text-white hover:cursor-pointer bg-blue-500 rounded-xl h-8 hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center"
           >
             <FontAwesomeIcon icon={faCrosshairs} />
           </button>
@@ -102,7 +102,7 @@ export function Main() {
         <button
           type="submit"
           form="form"
-          className="p-2 text-white bg-blue-600 rounded-xl h-10 w-14 transition-colors duration-200 flex items-center justify-center"
+          className="p-2 text-white bg-blue-600 hover:cursor-pointer hover:bg-blue-700  rounded-xl h-10 w-14 transition-colors duration-200 flex items-center justify-center"
         >
           <FontAwesomeIcon icon={faRightToBracket} />
         </button>

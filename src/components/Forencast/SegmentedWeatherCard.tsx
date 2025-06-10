@@ -31,7 +31,7 @@ export function SegmentedWeatherCard({
         {forecasts.map((forecast) => (
           <div
             key={forecast.dt}
-            className="flex items-center justify-between bg-blue-600 rounded-lg p-3"
+            className="flex hover:scale-110 duration-300 ease items-center justify-between bg-blue-600 rounded-lg p-3"
           >
             <span className="text-white font-medium text-sm md:text-base w-1/4">
               {new Date(forecast.dt * 1000).toLocaleTimeString("uk-UA", {

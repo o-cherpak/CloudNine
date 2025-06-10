@@ -28,8 +28,8 @@ export function WeatherNavigation(
               }
               className={`px-4 py-2 text-sm sm:text-base rounded-full transition-all duration-300 ${
                 activeTab === tab.id
-                  ? "bg-gradient-to-r from-blue-100 to-blue-200 text-black shadow-md"
-                  : "text-white hover:text-white hover:bg-white/5"
+                  ? "bg-gradient-to-r from-blue-100 hover:cursor-pointer font-medium to-blue-200 text-black shadow-md"
+                  : "text-white hover:text-white hover:cursor-pointer font-medium hover:bg-white/25"
               }`}
             >
               {tab.label}

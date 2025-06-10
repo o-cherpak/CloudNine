@@ -14,7 +14,7 @@ export function Header() {
     <header className="bg-gradient-to-br from-indigo-700 to-blue-600 border-b-2  flex flex-row items-center justify-center md:justify-between p-4 md:px-10 text-white">
       <Logo />
 
-      <div className="hidden md:flex items-center gap-6">
+      <div className="hidden md:flex items-center gap-6 bg-white p-1 px-4 rounded-2xl shadow-md">
         <SocialIcon icon={faFacebook} href="#" color="text-blue-700" />
 
         <SocialIcon icon={faInstagram} href="#" color="text-yellow-500" />
