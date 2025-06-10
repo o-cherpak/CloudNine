@@ -56,7 +56,7 @@ export function WeatherNavigation(
         {activeTab === "now" && (
           <img
             className="hidden xl:flex w-1/3 h-1/2"
-            src="public/images/undraw_weather-notification_5wuk.svg"
+            src="/images/undraw_weather-notification_5wuk.svg"
             alt=""
           />
         )}
