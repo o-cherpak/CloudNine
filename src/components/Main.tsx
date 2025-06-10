@@ -26,6 +26,7 @@ export function Main() {
   ) => {
     e.preventDefault();
     const location = await getLocation();
+    console.log(location);
 
     if (!location) {
       notifyError("Unable to retrieve location. Please try again.");
