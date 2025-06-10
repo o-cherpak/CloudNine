@@ -8,7 +8,10 @@ type LastCitiesProps = {
   onCityClick: (city: string) => void;
 };
 
-export function LastCities({ cityName, onCityClick }: Readonly<LastCitiesProps>) {
+export function LastCities({
+  cityName,
+  onCityClick,
+}: Readonly<LastCitiesProps>) {
   const [history, setHistory] = useState<string[]>([]);
 
   useEffect(() => {
@@ -42,6 +45,12 @@ export function LastCities({ cityName, onCityClick }: Readonly<LastCitiesProps>)
     notifySuccess(`City "${cityToRemove}" removed from history!`);
   };
 
+  let gridCol = 2 as number;
+
+  if (history.length === 1) {
+    gridCol = 1;
+  }
+
   return (
     <div className="p-4 flex flex-col bg-white rounded-lg shadow-md max-w-2xl mt-4 justify-self-center">
       <ToastContainer
@@ -54,7 +63,7 @@ export function LastCities({ cityName, onCityClick }: Readonly<LastCitiesProps>)
       />
 
       <h2 className="text-xl font-semibold mb-4 text-center">Search History</h2>
-      <div className="grid grid-cols-2 sm:flex items-center gap-4 justify-center">
+      <div className={`grid ${gridCol} sm:flex items-center gap-4 justify-center`}>
         {history.map((city) => (
           <LastCityCard
             cityName={city}

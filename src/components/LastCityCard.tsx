@@ -20,9 +20,11 @@ export function LastCityCard({
                  hover:bg-gray-200 hover:cursor-pointer transition-colors duration-200 text-sm sm:text-base
                  group"
     >
-      <p className="truncate">{cityName}</p>
+      <p className="truncate text-center">{cityName}</p>
 
-      <button
+      <div
+        role="button"
+        tabIndex={0}
         onClick={(e) => {
           e.stopPropagation();
 
@@ -33,7 +35,7 @@ export function LastCityCard({
         aria-label={`Remove ${cityName} from history`}
       >
         <FontAwesomeIcon icon={faTimes} />
-      </button>
+      </div>
     </button>
   );
 }
